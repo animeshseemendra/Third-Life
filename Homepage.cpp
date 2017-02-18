@@ -15,7 +15,7 @@ class user
 			int month;
 			int year;
 };
-class Thirdlife : public user
+class Thirdlife
 {
 		public:
 			char username[10];
@@ -42,16 +42,11 @@ int Thirdlife :: signup()
 {	
 	char password[16];
 	user ob1;
-	signup:
-	for(int i=0;i<15;i++)
-	{
-		cout<<endl;
-	}
-	cout<<setw<<(45)<<"Signup"<<endl<<endl;
+	//*signup:
+	cout<<setw(45)<<"Signup"<<endl<<endl;
+	cin.ignore();
 	cout<<setw(35)<<"Username :";
 	gets(ob1.username);
-	ifstream user;
-	user.open(ob1.username,ios::in | ios::binary);
 	cout<<endl<<setw(35)<<"Password :";
 	gets(ob1.password);
 	cout<<endl<<setw(35)<<"re-enter your password :";
@@ -61,7 +56,7 @@ int Thirdlife :: signup()
 			cout<<endl<<setw(35)<<"XX PASSWORD DIDN'T MATCHED XX";
 			cout<<endl<<setw(35)<<"Re-enter all your informaton";
 			cin.ignore();
-			goto signup;	
+			//*goto signup;	
 		}
 	date:
 	cout<<setw(35)<<"date of birth(mm-dd-yyyy) :";
@@ -139,6 +134,22 @@ int Thirdlife :: signup()
 						}
 				}
 	}
-	user.write((char*)&ob1,sizeof(ob1));
+	//*user.write((char*)&ob1,sizeof(ob1));
 		return 0;
+}
+int main()
+{
+	int c;
+	cout<<"1. Login"<<endl<<"2. Signup"<<endl<<"choice :";
+	cin>>c;
+	Thirdlife u;
+	if(c==1)
+	{
+		u.login();
+	}
+	if(c==2)
+	{
+		u.signup();
+	}
+	return 0;
 }
